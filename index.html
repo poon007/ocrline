@@ -7,13 +7,21 @@
 </head>
 <body>
 <script>
-  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxfGvu5fpSl508NwcFJBE_7FH6Ag3WvjToW3hbREf28ZnyNUh4Q26iBwYgOcHXwlTym/exec"; // ← แก้ตรงนี้
-  const LIFF_ID = "1656418068-mQg62cpf"; // ← แก้ตรงนี้
+  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/xxx/exec";
+  const LIFF_ID = "1656418068-mQg62cpf";
 
   liff.init({ liffId: LIFF_ID })
     .then(() => {
-      const token = liff.getAccessToken();
-      window.location.href = APPS_SCRIPT_URL + "?token=" + token;
+      // ✅ บังคับเปิดใน External Browser (Chrome/Safari)
+      // แทนที่จะเปิดใน LINE browser
+      if (liff.isInClient()) {
+        liff.openWindow({
+          url: APPS_SCRIPT_URL,
+          external: true  // ← นี่คือ key สำคัญ
+        });
+      } else {
+        window.location.href = APPS_SCRIPT_URL;
+      }
     })
     .catch(() => {
       window.location.href = APPS_SCRIPT_URL;
