@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script charset="utf-8" 
+    src="https://static.line-scdn.net/liff/edge/2/sdk.js">
+  </script>
+</head>
+<body>
+<script>
+  const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxfGvu5fpSl508NwcFJBE_7FH6Ag3WvjToW3hbREf28ZnyNUh4Q26iBwYgOcHXwlTym/exec"; // ← แก้ตรงนี้
+  const LIFF_ID = "1656418068-mQg62cpf"; // ← แก้ตรงนี้
+
+  liff.init({ liffId: LIFF_ID })
+    .then(() => {
+      const token = liff.getAccessToken();
+      window.location.href = APPS_SCRIPT_URL + "?token=" + token;
+    })
+    .catch(() => {
+      window.location.href = APPS_SCRIPT_URL;
+    });
+</script>
+</body>
+</html>
