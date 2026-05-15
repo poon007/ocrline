@@ -17,7 +17,7 @@
       if (liff.isInClient()) {
         liff.openWindow({
           url: APPS_SCRIPT_URL,
-          external: true  // ← นี่คือ key สำคัญ
+          external: false  // ← นี่คือ key สำคัญ
         });
       } else {
         window.location.href = APPS_SCRIPT_URL;
